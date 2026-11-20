@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sputnik: The First Satellite</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="hero">
+    <p class="kicker">4 October 1957</p>
+    <h1>Sputnik 1</h1>
+    <p class="lead">A polished metal sphere the size of a beach ball that started the Space Age.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>What was Sputnik?</h2>
+      <p>Sputnik 1 was the first artificial Earth satellite, launched by the Soviet Union on
+      4 October 1957 from the Baikonur Cosmodrome aboard an R-7 rocket. Its name simply means
+      "fellow traveler" in Russian. The program was led by chief designer Sergei Korolev.</p>
+    </section>
+
+    <section>
+      <h2>Key facts</h2>
+      <div class="facts">
+        <div><strong>83.6 kg</strong><span>mass</span></div>
+        <div><strong>58 cm</strong><span>diameter</span></div>
+        <div><strong>~96 min</strong><span>per orbit</span></div>
+        <div><strong>92 days</strong><span>in orbit</span></div>
+      </div>
+      <ul>
+        <li>Four external antennas, roughly 2.4 to 2.9 m long, broadcast a radio "beep-beep" signal.</li>
+        <li>It transmitted on 20.005 and 40.002 MHz, so amateur radio operators worldwide could pick it up.</li>
+        <li>Its batteries lasted about three weeks; the satellite re-entered the atmosphere on 4 January 1958.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Timeline</h2>
+      <ol class="timeline">
+        <li><b>4 Oct 1957</b> Sputnik 1 launches and shocks the world.</li>
+        <li><b>3 Nov 1957</b> Sputnik 2 carries the dog Laika, the first animal in orbit.</li>
+        <li><b>Jan 1958</b> Sputnik 1 burns up on re-entry.</li>
+        <li><b>1958</b> The US founds NASA, partly in response to the "Sputnik crisis".</li>
+        <li><b>1961</b> Yuri Gagarin becomes the first human in space.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Why it mattered</h2>
+      <p>Sputnik kicked off the Space Race. It led to major investment in science education
+      and research, the creation of NASA and DARPA, and eventually to satellite communications,
+      GPS and weather forecasting.</p>
+    </section>
+
+    <section>
+      <h2>Free images from Wikimedia Commons</h2>
+      <p class="note">Fetched live by the server from the Commons API, with licence info shown.</p>
+      {% if commons %}
+      <div class="gallery">
+        {% for img in commons %}
+        <figure>
+          <a href="{{ img.page }}" target="_blank" rel="noopener">
+            <img src="{{ img.url }}" alt="{{ img.title }}" loading="lazy">
+          </a>
+          <figcaption>
+            {{ img.title }}<br>
+            <small>{{ img.artist }} &middot; {{ img.license }}</small>
+          </figcaption>
+        </figure>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="note">Couldn't reach Wikimedia Commons right now. Check that the server has outbound internet access.</p>
+      {% endif %}
+    </section>
+
+    <section>
+      <h2>Sample placeholder images</h2>
+      <p class="note">Random sample photos from picsum.photos, just to test image loading.</p>
+      <div class="gallery">
+        {% for s in samples %}
+        <figure><img src="{{ s.url }}" alt="{{ s.alt }}" loading="lazy"></figure>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+
+  <footer>Test site &middot; built with Flask &middot; images via Wikimedia Commons and picsum.photos</footer>
+</body>
+</html>
